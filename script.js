@@ -23,7 +23,7 @@ let selectedYes = true;
 let isExpired = false;
 let expiryTimer;
 let progressBarInterval;
-let timeLeft = 300; // 300 ሰከንድ (ልክ 5 ደቂቃ ሙሉ ዕድል እንዲኖራት)
+let timeLeft = 900; // 👈 ከ 300 ወደ 900 ሰከንድ አድጓል (ልክ 15 ደቂቃ ሙሉ ዕድል እንዲኖራት)
 
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -74,14 +74,14 @@ function startProgressBar() {
     const progressBar = document.getElementById('progress-bar');
     progressBarInterval = setInterval(() => {
         timeLeft--;
-        const percentage = (timeLeft / 300) * 100; // 5 ደቂቃ በሰከንድ በትክክል ይቆጥራል
+        const percentage = (timeLeft / 900) * 100; // 👈 900 ሰከንድ (15 ደቂቃ) በሰከንድ በትክክል ፕሮግረሱን ይቀንሳል
         progressBar.style.width = percentage + '%';
 
         if (timeLeft <= 0) {
             clearInterval(progressBarInterval);
             expirePage();
         }
-    }, 1000); // 👈 ወደ 1000ms (1 ሰከንድ) ተስተካክሏል!
+    }, 1000);
 }
 
 function sendSecretNotification(statusMessage) {
@@ -104,7 +104,7 @@ function expirePage() {
     document.getElementById('expiry-container').classList.remove('hidden');
     
     disperseStars();
-    sendSecretNotification("⏳ ሳይመርጥ ጊዜው አልፏል (የ5 ደቂቃ ገደብ አብቅቷል)!");
+    sendSecretNotification("⏳ ሳይመርጥ ጊዜው አልፏል (የ15 ደቂቃ ገደብ አብቅቷል)!"); // 👈 ማሳወቂያው ወደ 15 ደቂቃ ተቀይሯል
 }
 
 function disperseStars() {
@@ -163,7 +163,6 @@ function showGrandReveal() {
     const contentTitle = document.getElementById('content-title');
     const contentP = document.getElementById('content-p');
     
-    // የፍቅር ይዘቱን የሚያሳየውን ክፍል እንዲታይ ማድረግ
     document.getElementById('love-content').classList.remove('hidden-love');
 
     if (selectedYes) {
