@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>የህይወት መስመር ✨</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="neon-blur-1"></div>
+    <div class="neon-blur-2"></div>
+    <div id="particle-container"></div>
+
+    <!-- 1. የሰም እና ወርቅ መግቢያ ገጽ -->
+    <div id="intro-container" class="main-wrapper">
+        <div class="luxury-card glass-glow animate-fade-in">
+            <h1 class="master-title">📜 ማስተዋል...</h1>
+            <p class="riddle-text">
+                "ሰምነቱ ውበት ነው፣ ቀርቦ ላስተዋለው፣<br>
+                ወርቁ ግን እውነት ነው፣ ዘልቆ ለገለጠው።"
+            </p>
+            <p class="cyber-text" style="margin-top: 20px;">ሕይወት በምርጫዎች የተሞላች እንቆቅልሽ ናት።</p>
+            <button class="btn yes-premium" onclick="startProject()" style="margin: 15px auto 0 auto; display: block;">ወደ ምርጫው እለፍ 🚪</button>
+        </div>
+    </div>
+
+    <!-- 2. የጥያቄ እና የምርጫ መድረክ -->
+    <div id="choice-container" class="main-wrapper hidden">
+        <div class="luxury-card">
+            <h1 class="master-title">✨ የልብ ውሳኔ ✨</h1>
+            <p class="cyber-text">በህይወትሽ ውስጥ የምታደርጊው እያንዳንዱ ምርጫ የራሱ ዋጋ አለው። እውነቱን ንገሪኝ... 👇</p>
+            
+            <div class="button-group">
+                <button id="yes-btn" class="btn yes-premium" onclick="makeChoice(true)">እወድሃለሁ ❤️</button>
+                <button id="no-btn" class="btn no-premium" onclick="makeChoice(false)">አልወድህም 😢</button>
+            </div>
+            
+            <!-- የእይታ መቁጠሪያ መስመር -->
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+            <div id="timer-display" class="timer-text">ይህ ምርጫ ከ 30 ሰከንድ በኋላ ያበቃል... ⏱️</div>
+        </div>
+    </div>
+
+    <!-- 3. ጥቅሶች የሚፈሱበት ሲኒማቲክ ክፍል -->
+    <div id="text-container" class="cinema-stage hidden">
+        <h2 id="quote-text" class="glow-text"></h2>
+    </div>
+
+    <!-- 4. የመጨረሻው የይዘት እና የጽሑፍ ማስታወሻ ማሳያ -->
+    <div id="surprise-container" class="final-stage hidden">
+        <div class="glass-canvas">
+            <h1 id="final-title" class="master-title"></h1>
+            
+            <div id="heart-icon" class="luxury-heart">
+                <div class="heart-inner">
+                    <span id="heart-name" class="name-glow"></span>
+                </div>
+            </div>
+
+            <div id="love-content" class="hidden-love">
+                <h2 id="content-title" class="love-title"></h2>
+                <p id="content-p" class="love-paragraph"></p>
+                
+                <!-- ✍️ የራሷን ስሜት የምትጽፍበት ሳጥን -->
+                <div class="feedback-area">
+                    <label for="user-note" class="feedback-label">ሃሳብ ካለ እዚህ... 📝</label>
+                    <textarea id="user-note" placeholder="የልብሽን እውነት እዚህ መጻፍ ትችያለሽ..."></textarea>
+                    <button class="btn send-imo-btn" onclick="submitFinalData()">Send message-box 📤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ጊዜው ሲያልቅ የሚመጣ የ Expiry ገጽ -->
+    <div id="expiry-container" class="final-stage hidden">
+        <div class="glass-canvas expired-card">
+            <h1 class="master-title">⏱️ ጊዜው አልፏል...</h1>
+            <p class="love-paragraph" style="text-align: center;">
+                ልክ እንደዚህ ድረ-ገጽ ሁሉ፣ በህይወት ውስጥም አንዳንድ ምርጫዎች የምናደርግበት ጊዜ ገደብ አላቸው። 
+                ጊዜው ካለፈ በኋላ ወደኋላ መመለስ ወይም እንደገና መምረጥ አይቻልም። 
+            </p>
+        </div>
+    </div>
+
+    <audio id="bg-music" src="music.mp3" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>

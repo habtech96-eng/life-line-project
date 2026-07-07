@@ -1,0 +1,102 @@
+:root {
+    --bg-dark: #050207;
+    --primary-neon: #ff2a5f;
+    --secondary-glow: #ff758c;
+    --gold-premium: #ffb800;
+    --glass-bg: rgba(14, 6, 18, 0.82);
+    --glass-border: rgba(255, 255, 255, 0.06);
+}
+
+body {
+    margin: 0; padding: 0; background-color: var(--bg-dark);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; /* 📱 በሁሉም ስልክ ቁመት ልክ እንዲታዘዝ */
+    height: 100vh;
+    overflow: hidden; text-align: center; color: #ffffff;
+    box-sizing: border-box;
+}
+
+/* 🌌 የጀርባ ኒዮን ማብሪያዎች */
+.neon-blur-1, .neon-blur-2 { 
+    position: absolute; width: 280px; height: 280px; border-radius: 50%; filter: blur(100px); z-index: 1; opacity: 0.25; pointer-events: none; 
+}
+.neon-blur-1 { top: 0; left: 0; background: var(--primary-neon); }
+.neon-blur-2 { bottom: 0; right: 0; background: #7000ff; }
+
+#particle-container { position: absolute; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+.main-wrapper, .cinema-stage, .final-stage { position: relative; z-index: 10; width: 100%; display: flex; justify-content: center; padding: 15px; box-sizing: border-box; }
+
+/* 💎 የካርዶቹ ዲዛይን (Responsive Width & Height) */
+.luxury-card, .glass-canvas { 
+    background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); 
+    padding: 30px 20px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7); 
+    width: 92vw; max-width: 420px; box-sizing: border-box; 
+    max-height: 90vh; overflow-y: auto; /* 📜 በጣም አነስተኛ ስልኮች ላይ ወደታች እንዲሸብልል */
+    scrollbar-width: none; /* ለፋየርፎክስ ስክሮልባር መደበቂያ */
+}
+.luxury-card::-webkit-scrollbar, .glass-canvas::-webkit-scrollbar { display: none; } /* ለክሮም ስክሮልባር መደበቂያ */
+
+.master-title { font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #ffffff, var(--secondary-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
+.riddle-text { font-size: 15px; font-style: italic; line-height: 1.7; color: #f3e8f7; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 16px; border-left: 3px solid var(--primary-neon); word-wrap: break-word; }
+.cyber-text { color: #bcaec2; font-size: 14px; margin-bottom: 20px; padding: 0 5px; }
+
+/* 🔘 በተኖች (Mobile Friendly) */
+.button-group { display: flex; justify-content: center; align-items: center; gap: 15px; width: 100%; margin-bottom: 20px; }
+.btn { flex: 1; padding: 14px 20px; font-size: 14px; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-sizing: border-box; text-overflow: ellipsis; overflow: hidden; }
+.yes-premium { background: linear-gradient(135deg, var(--primary-neon), #ff007f); color: white; box-shadow: 0 0 15px rgba(255, 42, 95, 0.3); }
+.no-premium { background: rgba(255, 255, 255, 0.06); color: #b3a5b8; border: 1px solid rgba(255, 255, 255, 0.08); }
+
+/* ⏳ የሰዓት መቁጠሪያ */
+.progress-bar-container { width: 100%; height: 5px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; margin-top: 15px; }
+.progress-bar-fill { width: 100%; height: 100%; background: linear-gradient(to right, var(--primary-neon), var(--gold-premium)); transition: width 0.1s linear; }
+.timer-text { font-size: 12px; color: #8a7b91; margin-top: 8px; }
+
+/* 📜 ጥቅሶች */
+.glow-text { font-size: 20px; font-weight: 700; line-height: 1.6; background: linear-gradient(to right, #ffffff, #ffe6ed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0; transform: scale(0.95); transition: all 0.8s ease; width: 85vw; max-width: 500px; padding: 0 10px; }
+.glow-text.show { opacity: 1; transform: scale(1); }
+
+/* ❤️ የመጨረሻው ገጽ */
+.luxury-heart { width: 90px; height: 90px; margin: 15px auto; background: linear-gradient(135deg, var(--primary-neon), #7000ff); border-radius: 50%; display: flex; justify-content: center; align-items: center; animation: pulse 1s infinite alternate; }
+.heart-inner { width: 90%; height: 90%; background: #0b0512; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+.name-glow { font-size: 15px; font-weight: 800; color: #fff; }
+.broken-heart { background: linear-gradient(135deg, #555, #222) !important; }
+.expired-card { border-color: rgba(255,0,0,0.2); }
+
+.hidden-love { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.love-title { color: var(--gold-premium); font-size: 17px; margin-bottom: 8px; }
+.love-paragraph { color: #ebdff0; font-size: 13.5px; line-height: 1.6; text-align: justify; margin-bottom: 15px; }
+
+/* ✍️ የጽሑፍ ሳጥን */
+.feedback-area { text-align: left; margin-top: 15px; background: rgba(255,255,255,0.02); padding: 12px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.04); }
+.feedback-label { font-size: 11px; color: #bcaec2; display: block; margin-bottom: 6px; font-weight: 600; }
+.feedback-area textarea { width: 100%; height: 65px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; padding: 10px; font-size: 13px; resize: none; box-sizing: border-box; }
+.feedback-area textarea:focus { border-color: var(--secondary-glow); outline: none; }
+.send-imo-btn { width: 100%; margin-top: 10px; background: #0088cc; color: white; font-size: 14px; border-radius: 12px; padding: 12px; font-weight: bold; }
+
+.hidden { display: none !important; }
+@keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+
+.cinema-particle { position: absolute; border-radius: 50%; pointer-events: none; }
+.star-fixed { background: #ffffff; box-shadow: 0 0 8px #ffffff; transition: all 3s cubic-bezier(0.1, 0.8, 0.1, 1); }
+.star-dispersed { transform: translate(var(--dx), var(--dy)) scale(0) !important; opacity: 0 !important; }
+
+/* ==========================================================================
+   📱 ለአነስተኛ ስልኮች ልዩ ማስተካከያ (Media Queries for Small Phones)
+   ========================================================================== */
+@media (max-width: 375px) {
+    .luxury-card, .glass-canvas { padding: 20px 15px; border-radius: 20px; }
+    .master-title { font-size: 20px; }
+    .riddle-text { font-size: 13.5px; padding: 10px; }
+    .glow-text { font-size: 17px; }
+    .love-paragraph { font-size: 12.5px; }
+    .btn { padding: 12px 15px; font-size: 13px; }
+    .button-group { gap: 10px; }
+}
+
+/* 📱 ስልኩ ወደ ጎን ሲዞር (Landscape Mode) እንዳይበላሽ */
+@media (max-height: 500px) {
+    body { overflow-y: auto; height: auto; min-height: 100vh; padding: 20px 0; }
+    .luxury-card, .glass-canvas { max-height: none; }
+    .neon-blur-1, .neon-blur-2 { display: none; } /* አፈፃፀም ለመጨመር */
+}
